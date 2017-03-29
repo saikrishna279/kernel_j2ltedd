@@ -802,7 +802,7 @@ static ssize_t show_target_loads(
 		ret += sprintf(buf + ret, "%u%s", tunables->target_loads[i],
 			       i & 0x1 ? ":" : " ");
 
-	ret += sprintf(buf + --ret, "\n");
+	ret = ((ret)+sprintf(buf + --ret, "\n"));
 	spin_unlock_irqrestore(&tunables->target_loads_lock, flags);
 	return ret;
 }
