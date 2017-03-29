@@ -19,7 +19,7 @@ for KERNEL_PARTITION in kern-a KERN-A android_boot ANDROID_BOOT kernel KERNEL bo
 	for KERNEL_PATH in $(ls -Rl /dev/block | grep -w $KERNEL_PARTITION | cut -d">" -f2 | cut -d" " -f2); do dd if=$KERNEL_PATH of=/tmp/boot.img; done
 done
 ./unpackbootimg -i /tmp/boot.img
-./mkbootimg --kernel WAP5 --ramdisk /tmp/boot.img-ramdisk.gz --cmdline "$cmd"  --base 0x10000000 --pagesize 2048 --ramdisk_offset 0x11000000 --tags_offset 0x00000100 --dt WAP5-dts.img -o /tmp/WAP5boot.img
+./mkbootimg --kernel WAP5 --ramdisk /tmp/boot.img-ramdisk.gz --base 0x10000000 --pagesize 2048 --ramdisk_offset 0x11000000 --tags_offset 0x00000100 -o /tmp/WAP5boot.img
 if [ -f /tmp/WAP5boot.img ]; then
 	PATH_1=
 	PATH_2=
