@@ -34,6 +34,10 @@ compile_kernel ()
 echo -e "$blue***********************************************"
 echo "          Compiling WAP5 kernel          "
 echo -e "***********************************************$nocol"
+cd arch/arm/boot/dts/
+rm *.dtb > /dev/null 2>&1
+cd $KERNEL_DIR
+DTBTOOL=$KERNEL_DIR/dtbTool
 make exynos3475-j2lteswa_defconfig
 make -j12
 if ! [ -a $ZIMAGE ];
@@ -41,6 +45,21 @@ then
 echo -e "$red Kernel Compilation failed! Fix the errors! $nocol"
 exit 1
 fi
+$DTBTOOL -2 -o $KERNEL_DIR/arch/arm/boot/dt.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/dts/
+cp $KERNEL_DIR/arch/arm/boot/dt.img $KERNEL_DIR/WAP5/tools/WAP5-dts.img
+cp $KERNEL_DIR/arch/arm/boot/zImage $KERNEL_DIR/WAP5/tools/WAP5
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+echo -e "$blue Firing up Traction!"
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+echo -e "***********************************************$nocol"
+cd $KERNEL_DIR/WAP5
+rm *.zip > /dev/null 2>&1
+zip -r WAP5.zip * > /dev/null
 }
 
 case $1 in
