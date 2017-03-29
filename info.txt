@@ -1,0 +1,8 @@
+ Kernel Size                : 5309264 bytes
+ Kernel Base Address        : 0x10000000
+ Ramdisk Size               : 2202379 bytes
+ Ramdisk Load Address       : 0x11000000
+ Second Stage Size          : 0 bytes
+ Second Stage Load Address  : 0x10f00000
+ Page Size                  : 2048 bytes
+ ASCIIZ Product Name        : "SYSMAGIC000K"
