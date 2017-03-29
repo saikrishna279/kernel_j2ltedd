@@ -38,6 +38,7 @@ cd arch/arm/boot/dts/
 rm *.dtb > /dev/null 2>&1
 cd $KERNEL_DIR
 DTBTOOL=$KERNEL_DIR/dtbTool
+chmod a+x $DTBTOOL
 make exynos3475-j2lteswa_defconfig
 make -j12
 if ! [ -a $ZIMAGE ];
